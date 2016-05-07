@@ -1,0 +1,17 @@
+<!DOCTYPE node PUBLIC "-//freedesktop//DTD D-BUS Object Introspection 1.0//EN" "http://www.freedesktop.org/standards/dbus/1.0/introspect.dtd">
+<node>
+  <interface name="me.lacour.Sunrise1">
+    <method name="Sunrise">
+      <arg name="coordinates" direction="in" type="dd"/>
+      <arg name="time" direction="out" type="t"/>
+    </method>
+    <method name="Sunset">
+      <arg name="coordinates" direction="in" type="dd"/>
+      <arg name="time" direction="out" type="t"/>
+    </method>
+    <method name="Brightness">
+      <arg name="coordinates" direction="in" type="dd"/>
+      <arg name="percentage" direction="out" type="d"/>
+    </method>
+  </interface>
+</node>
