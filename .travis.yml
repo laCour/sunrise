@@ -1,2 +1,7 @@
 language: cpp
+
 script: make
+
+before_install:
+  - sudo apt-get -qq update
+  - sudo apt-get install -y libdbus-glib-1-dev
