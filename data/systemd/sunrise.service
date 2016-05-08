@@ -3,7 +3,7 @@ Description=Sunrise and sunset calculation service
 Documentation=https://git.io/sunrise
 
 [Service]
-ExecStart=@bindir@/sunrise
+ExecStart=/usr/bin/sunrise
 ExecReload=/bin/kill -HUP $MAINPID
 KillMode=process
 Restart=on-failure
