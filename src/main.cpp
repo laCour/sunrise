@@ -128,6 +128,10 @@ int main(int argc, char **argv) {
   DBusConnection *conn;
   DBusError err;
 
+#ifndef DEBUG
+  setenv("DBUS_SESSION_BUS_ADDRESS", "unix:path=/var/run/dbus/system_bus_socket", 1);
+#endif
+
   dbus_error_init(&err);
 
   conn = dbus_bus_get(DBUS_BUS_SESSION, &err);
