@@ -18,7 +18,7 @@
  * along with sunrise.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <ctime>
+#include <time.h>
 #include <math.h>
 #include "sun.h"
 
@@ -48,7 +48,10 @@ long Sun::timestampFromHour(double hour, int offset) {
 
   double s, h;
   modf(hour * 60 * 60, &s);
+
+#ifndef AVR
   s += now->tm_gmtoff;
+#endif
 
   now->tm_sec = int(s) % 60;
   now->tm_min = modf(s / 60 / 60, &h) * 60;
@@ -59,7 +62,7 @@ long Sun::timestampFromHour(double hour, int offset) {
   return mktime(now) + (offset * 86400);
 }
 
-double Sun::lngHour() { return lng / ONE_HOUR; }
+double Sun::lngHour() { return lng / ONE_HOUR_DEG; }
 
 double Sun::trueLng(double approxTime) {
   double meanAnomaly = (EARTH_MEAN_MOTION * approxTime) - EARTH_MEAN_ORBITAL_DIFF;
@@ -74,7 +77,7 @@ double Sun::hourAngle(double trueLng, double zenith) {
   double lngQuadrant = floor(trueLng / 90) * 90;
   double rAQuadrant = floor(rightAscension / 90) * 90;
 
-  rightAscension = (rightAscension + (lngQuadrant - rAQuadrant)) / ONE_HOUR;
+  rightAscension = (rightAscension + (lngQuadrant - rAQuadrant)) / ONE_HOUR_DEG;
 
   double sinDec = EARTH_OBLIQUITY * sin(toRad(trueLng));
   double cosDec = cos(toRad(toDeg(asin(sinDec))));
@@ -89,7 +92,7 @@ double Sun::hour(double t, bool s, double zenith) {
   double l = trueLng(t);
   double hA = hourAngle(l, zenith);
 
-  double hour = (s ? 360 - toDeg(acos(hA)) : toDeg(acos(hA))) / ONE_HOUR;
+  double hour = (s ? 360 - toDeg(acos(hA)) : toDeg(acos(hA))) / ONE_HOUR_DEG;
   double meanT = hour + rightAscension - (0.06571 * t) - 6.622;
 
   return normalise(meanT - lngHour(), 0.0, 24.0);
@@ -132,6 +135,6 @@ double Sun::brightness(double startZenith, double stopZenith) {
     return 100 - (((double) (t - sunsetStart) / (sunsetStop - sunsetStart)) * 100);
   }
 
-  if (t < sunsetStart && t > sunriseStart) { return 100; }
+  if (t < sunsetStart) { return 100; }
   return 0;
 }

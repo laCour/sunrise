@@ -23,7 +23,7 @@
 
 #define _USE_MATH_DEFINES
 
-#define ONE_HOUR 15 // 360° / 24 hrs
+#define ONE_HOUR_DEG 15 // 360° / 24 hrs
 #define EARTH_ECCENTRICITY 0.01671022
 #define EARTH_OBLIQUITY 0.40911 // 23.44°
 #define EARTH_MEAN_MOTION 0.98560912 // 360° / 365.25636 days

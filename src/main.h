@@ -21,6 +21,8 @@
 #ifndef MAIN_H
 #define MAIN_H
 
+#define DEBUG
+
 #define DBUS_NAMESPACE "me.lacour.Sunrise1"
 
 #define ERR_OOM "Out of memory!\n"
