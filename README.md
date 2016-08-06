@@ -65,4 +65,18 @@ In order to run the binary without connecting to the elevated D-Bus system bus, 
 
 ## References
 
-TODO
+* [The Astronomical Almanac from the United States Naval Observatory (USNO)](http://asa.usno.navy.mil/)
+* [NASA Space Science Data Coordinated Archive (NSSDCA)](http://nssdc.gsfc.nasa.gov/planetary/)
+* [Astronomical Applications Department of the U.S. Naval Observatory](http://aa.usno.navy.mil/)
+
+## Notes
+
+The purpose of this project was to further define constants used in calculating sunset and sunrise times. Previously, the source of constants used in calculations were not defined anywhere these equations were used. Although I have not been able to find the source of all constants, the [majority have been defined](https://github.com/laCour/sunrise/blob/master/src/sun.h).
+
+The following constants have not yet been sourced:
+
+* [`SUN_MEAN_LONGITUDE`](https://github.com/laCour/sunrise/blob/master/src/sun.h#L32) - Equations use a modified mean longitude (about 0.7% more than the known mean longitude), I've not been able to find how this has been modified.
+* [`0.06571`](https://github.com/laCour/sunrise/blob/master/src/sun.cpp#L93) - Used to calculate the mean time of rising/setting.
+* [`6.622`](https://github.com/laCour/sunrise/blob/master/src/sun.cpp#L93) - Used to calculate the mean time of rising/setting.
+
+`EARTH_MEAN_ORBITAL_DIFF` is a century constant based on the calculated distances of the earth's aphelion and perihelion for the next 100 years.
