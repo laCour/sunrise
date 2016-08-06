@@ -76,7 +76,7 @@ The purpose of this project was to further define constants used in calculating 
 The following constants have not yet been sourced:
 
 * [`SUN_MEAN_LONGITUDE`](https://github.com/laCour/sunrise/blob/master/src/sun.h#L32) - Equations use a modified mean longitude (about 0.7% more than the known mean longitude), I've not been able to find how this has been modified.
-* [`0.06571`](https://github.com/laCour/sunrise/blob/master/src/sun.cpp#L93) - Used to calculate the mean time of rising/setting.
-* [`6.622`](https://github.com/laCour/sunrise/blob/master/src/sun.cpp#L93) - Used to calculate the mean time of rising/setting.
+* [`0.06571`](https://github.com/laCour/sunrise/blob/master/src/sun.cpp#L96) - Used to calculate the mean time of rising/setting.
+* [`6.622`](https://github.com/laCour/sunrise/blob/master/src/sun.cpp#L96) - Used to calculate the mean time of rising/setting.
 
 `EARTH_MEAN_ORBITAL_DIFF` is a century constant based on the calculated distances of the earth's aphelion and perihelion for the next 100 years.
